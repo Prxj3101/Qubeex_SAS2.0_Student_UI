@@ -1,34 +1,19 @@
 import React, { useState } from 'react';
 import { Mail, Lock, GraduationCap, Eye, EyeOff } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface LoginPageProps {
-  onLogin: (user: User) => void;
-}
-
-const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
+const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     // Simulate API call
     setTimeout(() => {
-      const mockUser: User = {
+      const mockUser = {
         id: '1',
         name: 'Rajesh Kumar',
         email,

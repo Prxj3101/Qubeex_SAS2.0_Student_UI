@@ -2,23 +2,8 @@ import React, { useState } from 'react';
 import { User, Trophy, TrendingUp, Calendar, Flag, Award, Upload } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 
-interface UserProfile {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface YourProfileProps {
-  user: UserProfile | null;
-}
-
-const YourProfile: React.FC<YourProfileProps> = ({ user }) => {
-  const [activeTab, setActiveTab] = useState<'overview' | 'metrics' | 'achievements'>('overview');
+const YourProfile = ({ user }) => {
+  const [activeTab, setActiveTab] = useState('overview');
 
   const overallPerformanceData = [
     { subject: 'Math', marks: 89 },
@@ -94,7 +79,7 @@ const YourProfile: React.FC<YourProfileProps> = ({ user }) => {
     }
   ];
 
-  const getBadgeColor = (badge: string) => {
+  const getBadgeColor = (badge) => {
     switch (badge) {
       case 'gold': return 'bg-yellow-100 text-yellow-800';
       case 'silver': return 'bg-gray-100 text-gray-800';
@@ -104,7 +89,7 @@ const YourProfile: React.FC<YourProfileProps> = ({ user }) => {
     }
   };
 
-  const getFlagColor = (type: string) => {
+  const getFlagColor = (type) => {
     switch (type) {
       case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
       case 'complaint': return 'bg-red-100 text-red-800 border-red-200';
@@ -112,7 +97,7 @@ const YourProfile: React.FC<YourProfileProps> = ({ user }) => {
     }
   };
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'completed': return 'bg-green-100 text-green-800';
       case 'ongoing': return 'bg-blue-100 text-blue-800';
@@ -184,7 +169,7 @@ const YourProfile: React.FC<YourProfileProps> = ({ user }) => {
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                 activeTab === tab.id
                   ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'

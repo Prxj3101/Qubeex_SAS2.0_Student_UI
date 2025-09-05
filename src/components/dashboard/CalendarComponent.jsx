@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isToday } from 'date-fns';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const CalendarComponent: React.FC = () => {
+const CalendarComponent = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const monthStart = startOfMonth(currentDate);
   const monthEnd = endOfMonth(currentDate);
@@ -17,7 +17,7 @@ const CalendarComponent: React.FC = () => {
     exam: { color: 'bg-yellow-100 border-yellow-300 text-yellow-700', label: 'Main Exam' }
   };
 
-  const events: Record<string, { type: keyof typeof eventTypes; title: string }[]> = {
+  const events = {
     '2025-01-15': [{ type: 'holiday', title: 'Makar Sankranti' }],
     '2025-01-18': [{ type: 'test', title: 'Mathematics Quiz' }],
     '2025-01-20': [{ type: 'submission', title: 'Physics Assignment Due' }],
@@ -25,7 +25,7 @@ const CalendarComponent: React.FC = () => {
     '2025-01-26': [{ type: 'holiday', title: 'Republic Day' }],
   };
 
-  const navigateMonth = (direction: 'prev' | 'next') => {
+  const navigateMonth = (direction) => {
     setCurrentDate(prev => {
       const newDate = new Date(prev);
       if (direction === 'prev') {
@@ -37,7 +37,7 @@ const CalendarComponent: React.FC = () => {
     });
   };
 
-  const getEventsForDate = (date: Date) => {
+  const getEventsForDate = (date) => {
     const dateKey = format(date, 'yyyy-MM-dd');
     return events[dateKey] || [];
   };

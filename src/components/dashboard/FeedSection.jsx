@@ -1,7 +1,7 @@
 import React from 'react';
 import { MessageCircle, Heart, Share, Clock, Pin } from 'lucide-react';
 
-const FeedSection: React.FC = () => {
+const FeedSection = () => {
   const feedPosts = [
     {
       id: 1,
@@ -41,7 +41,7 @@ const FeedSection: React.FC = () => {
     }
   ];
 
-  const getPostTypeColor = (type: string) => {
+  const getPostTypeColor = (type) => {
     switch (type) {
       case 'announcement': return 'bg-red-100 text-red-800';
       case 'material': return 'bg-blue-100 text-blue-800';

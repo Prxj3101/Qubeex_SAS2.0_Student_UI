@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trophy, Medal, Award } from 'lucide-react';
 
-const Leaderboard: React.FC = () => {
+const Leaderboard = () => {
   const leaderboardData = [
     {
       rank: 1,
@@ -51,7 +51,7 @@ const Leaderboard: React.FC = () => {
     }
   ];
 
-  const getRankIcon = (rank: number) => {
+  const getRankIcon = (rank) => {
     switch (rank) {
       case 1: return <Trophy className="w-5 h-5 text-yellow-500" />;
       case 2: return <Medal className="w-5 h-5 text-gray-400" />;
@@ -60,7 +60,7 @@ const Leaderboard: React.FC = () => {
     }
   };
 
-  const getRankBg = (rank: number, isCurrentUser?: boolean) => {
+  const getRankBg = (rank, isCurrentUser) => {
     if (isCurrentUser) return 'bg-blue-50 border-blue-200';
     if (rank === 1) return 'bg-gradient-to-r from-yellow-50 to-yellow-100 border-yellow-200';
     if (rank === 2) return 'bg-gradient-to-r from-gray-50 to-gray-100 border-gray-200';

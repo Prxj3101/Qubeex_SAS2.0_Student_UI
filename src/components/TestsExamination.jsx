@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
 import { FileText, Clock, Play, Calendar, BookOpen } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface TestsExaminationProps {
-  user: User | null;
-}
-
-const TestsExamination: React.FC<TestsExaminationProps> = ({ user }) => {
-  const [activeTab, setActiveTab] = useState<'tests' | 'exams'>('tests');
+const TestsExamination = ({ user }) => {
+  const [activeTab, setActiveTab] = useState('tests');
 
   const upcomingTests = [
     {
@@ -94,12 +79,12 @@ const TestsExamination: React.FC<TestsExaminationProps> = ({ user }) => {
     }
   ];
 
-  const handleStartTest = (testId: number) => {
+  const handleStartTest = (testId) => {
     alert(`Starting test ${testId}... This would redirect to the test interface.`);
   };
 
-  const getSubjectColor = (subject: string) => {
-    const colors: Record<string, string> = {
+  const getSubjectColor = (subject) => {
+    const colors = {
       'Mathematics': 'bg-blue-100 text-blue-800',
       'Physics': 'bg-green-100 text-green-800',
       'Chemistry': 'bg-yellow-100 text-yellow-800',

@@ -1,28 +1,11 @@
-import React from 'react'; // Removed unused useState
+import React from 'react';
 import { Calendar, Trophy, Bell, TrendingUp } from 'lucide-react';
 // Corrected paths for sibling components
-import CalendarComponent from './dashboard/CalendarComponent';
-import FeedSection from './dashboard/FeedSection'
-import Leaderboard from './dashboard/Leaderboard';
+import CalendarComponent from './CalendarComponent';
+import FeedSection from './FeedSection';
+import Leaderboard from './Leaderboard';
 
-// ... rest of your code remains the same
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface DashboardProps {
-  user: User | null;
-}
-
-const Dashboard: React.FC<DashboardProps> = ({ user }) => {
+const Dashboard = ({ user }) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">

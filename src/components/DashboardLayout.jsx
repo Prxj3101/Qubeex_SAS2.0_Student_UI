@@ -10,24 +10,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-  user: User | null;
-  onLogout: () => void;
-}
-
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, user, onLogout }) => {
+const DashboardLayout = ({ children, user, onLogout }) => {
   const location = useLocation();
 
   const navigationItems = [

@@ -2,22 +2,7 @@ import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Trophy, TrendingUp, FileText, Award, Download, ExternalLink } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface SubjectTabsProps {
-  currentUser: User | null;
-}
-
-const SubjectTabs: React.FC<SubjectTabsProps> = ({ currentUser }) => {
+const SubjectTabs = ({ currentUser }) => {
   const [activeSubject, setActiveSubject] = useState('Mathematics');
 
   const subjects = [
@@ -58,7 +43,7 @@ const SubjectTabs: React.FC<SubjectTabsProps> = ({ currentUser }) => {
 
   const currentSubjectData = subjectData['Mathematics']; // Using Mathematics data for all subjects in demo
 
-  const getRankIcon = (rank: number) => {
+  const getRankIcon = (rank) => {
     switch (rank) {
       case 1: return <Trophy className="w-4 h-4 text-yellow-500" />;
       case 2: return <Award className="w-4 h-4 text-gray-400" />;
@@ -67,7 +52,7 @@ const SubjectTabs: React.FC<SubjectTabsProps> = ({ currentUser }) => {
     }
   };
 
-  const getGradeColor = (grade: string) => {
+  const getGradeColor = (grade) => {
     if (grade.startsWith('A')) return 'text-green-600 bg-green-100';
     if (grade.startsWith('B')) return 'text-blue-600 bg-blue-100';
     if (grade.startsWith('C')) return 'text-yellow-600 bg-yellow-100';

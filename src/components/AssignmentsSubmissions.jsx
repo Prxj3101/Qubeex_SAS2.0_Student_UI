@@ -1,23 +1,8 @@
 import React, { useState } from 'react';
 import { ClipboardList, Upload, Clock, CheckCircle, AlertCircle, File } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface AssignmentsSubmissionsProps {
-  user: User | null;
-}
-
-const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user }) => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+const AssignmentsSubmissions = ({ user }) => {
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const liveAssignments = [
     {
@@ -96,7 +81,7 @@ const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user })
     }
   ];
 
-  const getStatusColor = (status: string) => {
+  const getStatusColor = (status) => {
     switch (status) {
       case 'pending': return 'bg-yellow-100 text-yellow-800';
       case 'submitted': return 'bg-green-100 text-green-800';
@@ -105,7 +90,7 @@ const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user })
     }
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status) => {
     switch (status) {
       case 'pending': return <Clock className="w-4 h-4" />;
       case 'submitted': return <CheckCircle className="w-4 h-4" />;
@@ -114,8 +99,8 @@ const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user })
     }
   };
 
-  const getSubjectColor = (subject: string) => {
-    const colors: Record<string, string> = {
+  const getSubjectColor = (subject) => {
+    const colors = {
       'Mathematics': 'bg-blue-100 text-blue-800',
       'Physics': 'bg-green-100 text-green-800',
       'Chemistry': 'bg-yellow-100 text-yellow-800',
@@ -125,7 +110,7 @@ const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user })
     return colors[subject] || 'bg-gray-100 text-gray-800';
   };
 
-  const handleFileUpload = (assignmentId: number) => {
+  const handleFileUpload = (assignmentId) => {
     if (selectedFile) {
       alert(`Uploading ${selectedFile.name} for assignment ${assignmentId}...`);
       setSelectedFile(null);
@@ -134,7 +119,7 @@ const AssignmentsSubmissions: React.FC<AssignmentsSubmissionsProps> = ({ user })
     }
   };
 
-  const getDaysRemaining = (dueDate: string) => {
+  const getDaysRemaining = (dueDate) => {
     const due = new Date(dueDate);
     const now = new Date();
     const diffTime = due.getTime() - now.getTime();

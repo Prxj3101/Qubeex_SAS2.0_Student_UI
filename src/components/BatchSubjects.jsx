@@ -1,24 +1,9 @@
-import React, { useState } from 'react';
-import { Users, BookOpen, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { Users, BookOpen } from 'lucide-react';
 import BatchStudents from './batch/BatchStudents';
 import SubjectTabs from './batch/SubjectTabs';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface BatchSubjectsProps {
-  user: User | null;
-}
-
-const BatchSubjects: React.FC<BatchSubjectsProps> = ({ user }) => {
+const BatchSubjects = ({ user }) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
