@@ -1,9 +1,9 @@
 import React from 'react';
 import { Calendar, Trophy, Bell, TrendingUp } from 'lucide-react';
 // Corrected paths for sibling components
-import CalendarComponent from './CalendarComponent';
-import FeedSection from './FeedSection';
-import Leaderboard from './Leaderboard';
+import CalendarComponent from './dashboard/CalendarComponent';
+import FeedSection from './dashboard/FeedSection';
+import Leaderboard from './dashboard/Leaderboard';
 
 const Dashboard = ({ user }) => {
   return (
