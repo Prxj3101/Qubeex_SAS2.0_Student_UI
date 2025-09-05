@@ -1,22 +1,7 @@
 import React from 'react';
 import { Mail, User } from 'lucide-react';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
-
-interface BatchStudentsProps {
-  currentUser: User | null;
-}
-
-const BatchStudents: React.FC<BatchStudentsProps> = ({ currentUser }) => {
+const BatchStudents = ({ currentUser }) => {
   const batchStudents = [
     {
       id: '1',
