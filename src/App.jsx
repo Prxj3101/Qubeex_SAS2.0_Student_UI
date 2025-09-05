@@ -8,22 +8,13 @@ import TestsExamination from './components/TestsExamination';
 import AssignmentsSubmissions from './components/AssignmentsSubmissions';
 import YourProfile from './components/YourProfile';
 
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  rollNo: string;
-  batch: string;
-  division: string;
-  age: number;
-  photo: string;
-}
+// NOTE: Wo 'interface User' wala block yahan se hata diya gaya hai.
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleLogin = (userData: User) => {
+  const handleLogin = (userData) => {
     setUser(userData);
     setIsAuthenticated(true);
   };
