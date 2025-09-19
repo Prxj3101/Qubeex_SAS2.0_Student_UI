@@ -8,8 +8,6 @@ import TestsExamination from './components/TestsExamination';
 import AssignmentsSubmissions from './components/AssignmentsSubmissions';
 import YourProfile from './components/YourProfile';
 
-// NOTE: Wo 'interface User' wala block yahan se hata diya gaya hai.
-
 function App() {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -52,11 +52,18 @@ const Leaderboard = () => {
   ];
 
   const getRankIcon = (rank) => {
+    const baseClasses = 'w-10 h-10 transition-transform duration-500 group-hover:scale-110';
+    const hoverSpin = 'group-hover:animate-spin-y-slow'; // spin sirf hover pe
+
     switch (rank) {
-      case 1: return <Trophy className="w-5 h-5 text-yellow-500" />;
-      case 2: return <Medal className="w-5 h-5 text-gray-400" />;
-      case 3: return <Award className="w-5 h-5 text-amber-600" />;
-      default: return <span className="text-sm font-semibold text-gray-600">#{rank}</span>;
+      case 1:
+        return <Trophy className={`text-yellow-400 ${baseClasses} ${hoverSpin}`} />;
+      case 2:
+        return <Medal className={`text-gray-300 ${baseClasses} ${hoverSpin}`} />;
+      case 3:
+        return <Award className={`text-orange-400 ${baseClasses} ${hoverSpin}`} />;
+      default:
+        return <span className="text-sm font-semibold text-gray-600">#{rank}</span>;
     }
   };
 
@@ -64,7 +71,7 @@ const Leaderboard = () => {
     if (isCurrentUser) return 'bg-blue-50 border-blue-200';
     if (rank === 1) return 'bg-gradient-to-r from-yellow-50 to-yellow-100 border-yellow-200';
     if (rank === 2) return 'bg-gradient-to-r from-gray-50 to-gray-100 border-gray-200';
-    if (rank === 3) return 'bg-gradient-to-r from-amber-50 to-amber-100 border-amber-200';
+    if (rank === 3) return 'bg-gradient-to-r from-orange-50 to-orange-100 border-orange-200';
     return 'bg-white border-gray-200';
   };
 
@@ -73,18 +80,18 @@ const Leaderboard = () => {
       {leaderboardData.map((student) => (
         <div
           key={student.rollNo}
-          className={`flex items-center gap-4 p-4 rounded-lg border transition-all duration-200 hover:shadow-md ${getRankBg(student.rank, student.isCurrentUser)}`}
+          className={`group flex items-center gap-4 p-4 rounded-lg border transition-all duration-200 hover:shadow-md ${getRankBg(student.rank, student.isCurrentUser)}`}
         >
-          <div className="flex items-center justify-center w-8 h-8">
+          <div className="flex items-center justify-center w-12 h-12">
             {getRankIcon(student.rank)}
           </div>
-          
+
           <img
             src={student.photo}
             alt={student.name}
             className="w-10 h-10 rounded-full object-cover"
           />
-          
+
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-gray-800">{student.name}</span>
@@ -94,14 +101,14 @@ const Leaderboard = () => {
             </div>
             <span className="text-sm text-gray-500">{student.rollNo}</span>
           </div>
-          
+
           <div className="text-right">
             <div className="font-semibold text-gray-800">{student.percentage}%</div>
             <div className="text-sm text-gray-500">{student.totalMarks}/{student.maxMarks}</div>
           </div>
         </div>
       ))}
-      
+
       <div className="text-center pt-4 border-t border-gray-200">
         <p className="text-sm text-gray-500">Updated after every test • Next update in 2 days</p>
       </div>
