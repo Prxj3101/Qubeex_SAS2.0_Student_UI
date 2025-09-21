@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { Trophy, TrendingUp, FileText, Award, Download, ExternalLink } from 'lucide-react';
+import { Trophy, TrendingUp, FileText, Award, Download } from 'lucide-react';
 
 const SubjectTabs = ({ currentUser }) => {
   const [activeSubject, setActiveSubject] = useState('Mathematics');
@@ -41,7 +41,7 @@ const SubjectTabs = ({ currentUser }) => {
     }
   };
 
-  const currentSubjectData = subjectData['Mathematics']; // Using Mathematics data for all subjects in demo
+  const currentSubjectData = subjectData['Mathematics']; // Demo data
 
   const getRankIcon = (rank) => {
     switch (rank) {
@@ -69,8 +69,8 @@ const SubjectTabs = ({ currentUser }) => {
             onClick={() => setActiveSubject(subject)}
             className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
               activeSubject === subject
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
+                : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
             }`}
           >
             {subject}
@@ -78,9 +78,9 @@ const SubjectTabs = ({ currentUser }) => {
         ))}
       </div>
 
+      {/* Leaderboard & Performance */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Subject Leaderboard */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-gray-100/90 rounded-lg p-6 shadow-sm border border-gray-300">
           <div className="flex items-center gap-2 mb-4">
             <Trophy className="w-5 h-5 text-yellow-600" />
             <h3 className="text-lg font-semibold text-gray-800">{activeSubject} Leaderboard</h3>
@@ -89,8 +89,8 @@ const SubjectTabs = ({ currentUser }) => {
             {currentSubjectData.leaderboard.map((student) => (
               <div
                 key={student.rollNo}
-                className={`flex items-center gap-3 p-3 rounded-lg ${
-                  student.isCurrentUser ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50'
+                className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-200 ${
+                  student.isCurrentUser ? 'bg-blue-50 border border-blue-300' : 'bg-white hover:bg-gray-100'
                 }`}
               >
                 <div className="flex items-center justify-center w-6 h-6">
@@ -119,8 +119,7 @@ const SubjectTabs = ({ currentUser }) => {
           </div>
         </div>
 
-        {/* Performance Graph */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-gray-100/90 rounded-lg p-6 shadow-sm border border-gray-300">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-5 h-5 text-green-600" />
             <h3 className="text-lg font-semibold text-gray-800">Your Performance</h3>
@@ -145,27 +144,23 @@ const SubjectTabs = ({ currentUser }) => {
         </div>
       </div>
 
+      {/* Posts & Results */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Posts and Materials */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-gray-100/90 rounded-lg p-6 shadow-sm border border-gray-300">
           <div className="flex items-center gap-2 mb-4">
             <FileText className="w-5 h-5 text-purple-600" />
             <h3 className="text-lg font-semibold text-gray-800">Posts & Materials</h3>
           </div>
           <div className="space-y-3">
             {currentSubjectData.materials.map((material) => (
-              <div key={material.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={material.id} className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-gray-100 transition-all duration-200">
                 <div className="flex-1">
                   <h4 className="font-medium text-sm text-gray-800">{material.title}</h4>
                   <div className="flex items-center gap-2 text-xs text-gray-500 mt-1">
-                    <span>{material.type}</span>
-                    <span>•</span>
-                    <span>{material.size}</span>
-                    <span>•</span>
-                    <span>Uploaded {material.uploadDate}</span>
+                    <span>{material.type}</span>•<span>{material.size}</span>•<span>Uploaded {material.uploadDate}</span>
                   </div>
                 </div>
-                <button className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 rounded-md hover:bg-blue-200 transition-colors">
+                <button className="flex items-center gap-1 px-3 py-1 bg-red-100 text-red-700 rounded-md hover:bg-red-200 transition-colors">
                   <Download className="w-4 h-4" />
                   <span className="text-sm">Download</span>
                 </button>
@@ -174,15 +169,14 @@ const SubjectTabs = ({ currentUser }) => {
           </div>
         </div>
 
-        {/* Results */}
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <div className="bg-gray-100/90 rounded-lg p-6 shadow-sm border border-gray-300">
           <div className="flex items-center gap-2 mb-4">
             <Award className="w-5 h-5 text-orange-600" />
             <h3 className="text-lg font-semibold text-gray-800">Test Results</h3>
           </div>
           <div className="space-y-3">
             {currentSubjectData.results.map((result) => (
-              <div key={result.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div key={result.id} className="flex items-center justify-between p-3 bg-white rounded-lg hover:bg-gray-100 transition-all duration-200">
                 <div className="flex-1">
                   <h4 className="font-medium text-sm text-gray-800">{result.testName}</h4>
                   <p className="text-xs text-gray-500 mt-1">{result.date}</p>
