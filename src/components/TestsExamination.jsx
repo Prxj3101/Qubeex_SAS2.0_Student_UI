@@ -97,7 +97,7 @@ const TestsExamination = ({ user }) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <FileText className="w-8 h-8 text-blue-600" />
+        <FileText className="w-8 h-8 text-purple-600" />
         <div>
           <h1 className="text-3xl font-bold text-gray-800">Tests & Examination</h1>
           <p className="text-gray-600">Manage your tests and examinations</p>
@@ -110,8 +110,8 @@ const TestsExamination = ({ user }) => {
           onClick={() => setActiveTab('tests')}
           className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
             activeTab === 'tests'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-md'
+                : 'bg-purple-100 text-black-700 hover:bg-purple-200'
           }`}
         >
           Tests
@@ -120,8 +120,8 @@ const TestsExamination = ({ user }) => {
           onClick={() => setActiveTab('exams')}
           className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
             activeTab === 'exams'
-              ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-md'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-white shadow-md'
+              : 'bg-purple-100 text-black-700 hover:bg-yellow-300'
           }`}
         >
           Examinations
@@ -133,7 +133,7 @@ const TestsExamination = ({ user }) => {
           {/* Upcoming Tests */}
           <div className="bg-white/80 backdrop-blur-sm rounded-xl shadow-lg border border-gray-200/50 p-6">
             <div className="flex items-center gap-2 mb-6">
-              <Calendar className="w-5 h-5 text-blue-600" />
+              <Calendar className="w-5 h-5 text-purple-600" />
               <h2 className="text-xl font-semibold text-gray-800">Upcoming Tests</h2>
             </div>
             
@@ -170,7 +170,7 @@ const TestsExamination = ({ user }) => {
                     </div>
                   </div>
                   
-                  <button className="w-full px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors font-medium">
+                  <button className="w-full px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors font-medium">
                     View Details
                   </button>
                 </div>
@@ -225,7 +225,7 @@ const TestsExamination = ({ user }) => {
                     className={`w-full px-4 py-2 rounded-lg font-medium transition-colors ${
                       test.isActive
                         ? 'bg-green-600 text-white hover:bg-green-700'
-                        : 'bg-blue-100 text-blue-700 hover:bg-blue-200'
+                        : 'bg-red-100 text-red-700 hover:bg-red-200'
                     }`}
                   >
                     {test.isActive ? 'Resume Test' : 'Start Test'}
